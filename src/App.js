@@ -1,35 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Amplify from "aws-amplify";
+import {AmplifyAuthenticator, AmplifyGreetings} from "@aws-amplify/ui-react";
+import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
+import awsconfig from "./aws-exports";
 
-// Amplify authenticator options
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
-import Amplify from 'aws-amplify';
-import aws_exports from './aws-exports';
-Amplify.configure(aws_exports);
+Amplify.configure(awsconfig);
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <AmplifySignOut />
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+const GreetingsApp = () => {
+  const [authState, setAuthState] = React.useState();
+  const [user, setUser] = React.useState();
 
-export default withAuthenticator(App, { includeGreetings: true });
+  React.useEffect(() => {
+    return onAuthUIStateChange((nextAuthState, authData) => {
+      setAuthState(nextAuthState);
+      setUser(authData);
+    });
+  }, []);
+
+  return authState === AuthState.SignedIn && user ? (
+    <div className="App">
+      <AmplifyGreetings username={user.username}></AmplifyGreetings>
+    </div>
+  ) : (
+    <AmplifyAuthenticator />
+  );
+};
+
+export default GreetingsApp;
