@@ -26,6 +26,7 @@ const App = () => {
     <AmplifyAuthenticator usernameAlias="email">
       <AmplifySignUp
         slot="sign-up"
+        headerText="Login to First Salary"
         usernameAlias="email"
         formFields={[
           {
@@ -53,7 +54,7 @@ const App = () => {
           // },
         ]} 
       />
-      <AmplifySignIn slot="sign-in" usernameAlias="email" />
+      <AmplifySignIn headerText="Login to First Salary" slot="sign-in" usernameAlias="email" />
       </AmplifyAuthenticator>
   );
 };
