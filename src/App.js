@@ -1,13 +1,13 @@
 import React from "react";
 import "./App.css";
 import Amplify from "aws-amplify";
-import {AmplifyAuthenticator, AmplifyGreetings} from "@aws-amplify/ui-react";
+import {AmplifyAuthenticator, AmplifyGreetings, AmplifySignIn, AmplifySignUp} from "@aws-amplify/ui-react";
 import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
 import awsconfig from "./aws-exports";
 
 Amplify.configure(awsconfig);
 
-const GreetingsApp = () => {
+const App = () => {
   const [authState, setAuthState] = React.useState();
   const [user, setUser] = React.useState();
 
@@ -23,8 +23,39 @@ const GreetingsApp = () => {
       <AmplifyGreetings username={user.username}></AmplifyGreetings>
     </div>
   ) : (
-    <AmplifyAuthenticator />
+    <AmplifyAuthenticator usernameAlias="email">
+      <AmplifySignUp
+        slot="sign-up"
+        usernameAlias="email"
+        formFields={[
+          {
+            type: "name",
+            label: "Full Name *",
+            placeholder: "Enter your full name",
+            inputProps: { required: true, autocomplete: "name" },
+          },
+          {
+            type: "email",
+            label: "Email Address *",
+            placeholder: "Enter your email address",
+            inputProps: { required: true, autocomplete: "username" },
+          },
+          {
+            type: "password",
+            label: "Password *",
+            placeholder: "Enter your password",
+            inputProps: { required: true, autocomplete: "new-password" },
+          },
+          // {
+          //   type: "phone_number",
+          //   label: "Custom Phone Label",
+          //   placeholder: "Custom phone placeholder",
+          // },
+        ]} 
+      />
+      <AmplifySignIn slot="sign-in" usernameAlias="email" />
+      </AmplifyAuthenticator>
   );
 };
 
-export default GreetingsApp;
+export default App;
