@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // import Amplify from "aws-amplify";
 // import {AmplifyAuthenticator, AmplifyGreetings, AmplifySignIn, AmplifySignUp} from "@aws-amplify/ui-react";
@@ -22,7 +22,10 @@ function App() {
     <div>
       <MainHeader />
       <main>
-        <switch>
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/welcome"/>
+          </Route>
           <Route path="/welcome">
             <Welcome />
           </Route>
@@ -35,7 +38,7 @@ function App() {
           <Route path="/app">
           <ResumeBuilder/>
           </Route>
-        </switch>
+        </Switch>
       </main>
     </div>
   );
