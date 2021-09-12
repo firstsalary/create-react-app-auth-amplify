@@ -35,5 +35,5 @@ export const PortfolioData = [
         summary: 'third job in the corporate life',
         tech: 'Angular'
 
-    }
+    },
 ]
