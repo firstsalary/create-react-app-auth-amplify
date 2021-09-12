@@ -18,6 +18,8 @@ import ProductDetail from "./pages/ProductDetail";
 
 // Try Bootstrap now
 import NavigationBar from "./screens/navigationBar/NavigationBar";
+import Portfolio from "./screens/portfolio/Portfolio";
+
 
 function App() {
 
@@ -25,6 +27,8 @@ function App() {
     <div>
       {/* <MainHeader /> */}
       <NavigationBar />
+      <Portfolio />
+      
       {/* <main>
         <Switch>
           <Route path="/" exact>
