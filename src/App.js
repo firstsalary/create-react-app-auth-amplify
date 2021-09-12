@@ -19,7 +19,6 @@ import ProductDetail from "./pages/ProductDetail";
 function App() {
 
   return (
-    // <ResumeBuilder/>
     <div>
       <MainHeader />
       <main>
@@ -32,6 +31,9 @@ function App() {
           </Route>
           <Route path="/products/:productId">
             <ProductDetail />
+          </Route>
+          <Route path="/app">
+          <ResumeBuilder/>
           </Route>
         </switch>
       </main>
