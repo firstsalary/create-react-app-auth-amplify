@@ -1,62 +1,43 @@
 import React from "react";
 import "./App.css";
-import Amplify from "aws-amplify";
-import {AmplifyAuthenticator, AmplifyGreetings, AmplifySignIn, AmplifySignUp} from "@aws-amplify/ui-react";
-import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
-import awsconfig from "./aws-exports";
+import { Route, Switch } from 'react-router-dom';
 
-Amplify.configure(awsconfig);
+// import Amplify from "aws-amplify";
+// import {AmplifyAuthenticator, AmplifyGreetings, AmplifySignIn, AmplifySignUp} from "@aws-amplify/ui-react";
+// import {AuthState, onAuthUIStateChange} from "@aws-amplify/ui-components";
+// import awsconfig from "./aws-exports";
 
-const App = () => {
-  const [authState, setAuthState] = React.useState();
-  const [user, setUser] = React.useState();
+// Import Resume Builder
+import ResumeBuilder from './components/ResumeBuilder'
 
-  React.useEffect(() => {
-    return onAuthUIStateChange((nextAuthState, authData) => {
-      setAuthState(nextAuthState);
-      setUser(authData);
-    });
-  }, []);
+// Added Pages
+import Welcome from './pages/Welcome';
+import Products from './pages/Products'
+import MainHeader from "./components/MainHeader";
+import ProductDetail from "./pages/ProductDetail";
 
-  return authState === AuthState.SignedIn && user ? (
-    <div className="App">
-      <AmplifyGreetings username={user.username}></AmplifyGreetings>
+function App() {
+
+  return (
+    // <ResumeBuilder/>
+    <div>
+      <MainHeader />
+      <main>
+        <switch>
+          <Route path="/welcome">
+            <Welcome />
+          </Route>
+          <Route path="/products" exact>
+            <Products />
+          </Route>
+          <Route path="/products/:productId">
+            <ProductDetail />
+          </Route>
+        </switch>
+      </main>
     </div>
-  ) : (
-    <AmplifyAuthenticator usernameAlias="email">
-      <AmplifySignUp
-        slot="sign-up"
-        headerText="Login to First Salary"
-        usernameAlias="email"
-        formFields={[
-          {
-            type: "name",
-            label: "Full Name *",
-            placeholder: "Enter your full name",
-            inputProps: { required: true, autocomplete: "name" },
-          },
-          {
-            type: "email",
-            label: "Email Address *",
-            placeholder: "Enter your email address",
-            inputProps: { required: true, autocomplete: "username" },
-          },
-          {
-            type: "password",
-            label: "Password *",
-            placeholder: "Enter your password",
-            inputProps: { required: true, autocomplete: "new-password" },
-          },
-          // {
-          //   type: "phone_number",
-          //   label: "Custom Phone Label",
-          //   placeholder: "Custom phone placeholder",
-          // },
-        ]} 
-      />
-      <AmplifySignIn headerText="Login to First Salary" slot="sign-in" usernameAlias="email" />
-      </AmplifyAuthenticator>
   );
-};
+
+}
 
 export default App;
