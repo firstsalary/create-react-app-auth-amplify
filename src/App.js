@@ -16,12 +16,16 @@ import Products from './pages/Products'
 import MainHeader from "./components/MainHeader";
 import ProductDetail from "./pages/ProductDetail";
 
+// Try Bootstrap now
+import NavigationBar from "./screens/navigationBar/NavigationBar";
+
 function App() {
 
   return (
     <div>
-      <MainHeader />
-      <main>
+      {/* <MainHeader /> */}
+      <NavigationBar />
+      {/* <main>
         <Switch>
           <Route path="/" exact>
             <Redirect to="/welcome"/>
@@ -42,7 +46,7 @@ function App() {
             <Redirect to='/' />
           </Route>
         </Switch>
-      </main>
+      </main> */}
     </div>
   );
 
