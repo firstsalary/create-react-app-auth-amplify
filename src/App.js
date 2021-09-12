@@ -38,6 +38,9 @@ function App() {
           <Route path="/app">
           <ResumeBuilder/>
           </Route>
+          <Route path="*">
+            <Redirect to='/' />
+          </Route>
         </Switch>
       </main>
     </div>
