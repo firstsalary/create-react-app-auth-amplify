@@ -14,10 +14,8 @@ function Contact() {
         <div className="contact__container" id="contact">
             <div className="contact__data__links">
                 <div>
-                    <p>San Francisco, CA, USA</p>
                     <p>First Salary</p>
-                    <p>talent@firstsalary.net</p>
-                First Salary
+                    <p>San Francisco, CA, USA</p>
                 </div>
                 <div>
                 {createLinks()}
