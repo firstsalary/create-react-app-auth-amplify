@@ -8,6 +8,10 @@ export const NavigationLinks = [
         ref: '#portfolio'
     },
     {
+        name: 'Contact',
+        ref: '#contact'
+    },
+    {
         name: 'Login',
         ref: '#login'
     }
