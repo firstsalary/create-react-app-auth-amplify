@@ -12,6 +12,9 @@
     width: 25%;
     padding: 10px;
     border: none;
+    /* added by balbir */
+    margin-top: 1rem;
+
   }
    
   .portfolio__image:hover {
