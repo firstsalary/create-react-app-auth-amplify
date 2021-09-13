@@ -1,5 +1,9 @@
 export const NavigationLinks = [
     {
+        name: 'Career',
+        ref: '#career'
+    },
+    {
         name: 'Portfolio',
         ref: '#portfolio'
     },
