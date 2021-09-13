@@ -27,16 +27,16 @@ function App() {
   return (
     <div>
       {/* <MainHeader /> */}
-      <NavigationBar />
-      <Portfolio />
-      <Contact />
 
-      {/* <main>
+
+      {/* <main> */}
         <Switch>
           <Route path="/" exact>
-            <Redirect to="/welcome"/>
+          <NavigationBar />
+          <Portfolio />
+          <Contact />
           </Route>
-          <Route path="/welcome">
+          {/* <Route path="/welcome">
             <Welcome />
           </Route>
           <Route path="/products" exact>
@@ -44,15 +44,16 @@ function App() {
           </Route>
           <Route path="/products/:productId">
             <ProductDetail />
-          </Route>
-          <Route path="/app">
+          </Route> */}
+          <Route path="/login" exact>
           <ResumeBuilder/>
           </Route>
-          <Route path="*">
+          {/* <Route path="*">
             <Redirect to='/' />
-          </Route>
+          </Route> */}
         </Switch>
-      </main> */}
+      {/* </main> */}
+
     </div>
   );
 

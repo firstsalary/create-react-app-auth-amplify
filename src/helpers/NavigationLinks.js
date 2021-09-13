@@ -13,6 +13,6 @@ export const NavigationLinks = [
     },
     {
         name: 'Login',
-        ref: '#login'
+        ref: '/login'
     }
 ]
