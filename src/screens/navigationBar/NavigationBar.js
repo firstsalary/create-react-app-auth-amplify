@@ -16,7 +16,7 @@ function createLinks() {
 function NavigationBar() {
     return (
         <div id="home">
-            <Navbar className="navigation__container" expand='md'>
+            <Navbar className="navigation__container" expand='md' fixed="top">
                 <Navbar.Brand style={{ marginLeft: '1rem' }} href='#home'>First Salary</Navbar.Brand>
                 <Navbar.Toggle aria-controls='basic-navbar-nav' />
                 <Navbar.Collapse style={{ justifyContent: 'flex-end', marginRight: '1rem', borderColor: 'none' }}>
