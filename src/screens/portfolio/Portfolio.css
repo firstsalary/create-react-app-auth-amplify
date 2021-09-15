@@ -10,12 +10,13 @@
    
   #portfolio__card__container {
     width: 25%;
-    height: auto;
     padding: 10px;
     border: none;
     /* added by balbir */
     /* margin-top: 1rem; */
     margin-block: 1rem;
+    height: auto;
+
 
   }
    
